@@ -23,12 +23,12 @@ sudo sysctl net.ipv4.conf.all.forwarding=1
 sudo iptables -P FORWARD ACCEPT
 
 #create statsd volumes
-mkdir ~/statsd/opt/statsd
+mkdir -p ~/statsd/opt/statsd
 #create graphite volume
-mkdir ~/graphite/opt/graphite/conf
-mkdir ~/graphite/opt/graphite/storage
+mkdir -p ~/graphite/opt/graphite/conf
+mkdir -p ~/graphite/opt/graphite/storage
 #create grafana volume
-mkdir ~/grafana/var/lib/grafana
+mkdir -p ~/grafana/var/lib/grafana
 
 #start statsd, graphite and grafana
 #see documentation: https://github.com/hopsoft/docker-graphite-statsd
