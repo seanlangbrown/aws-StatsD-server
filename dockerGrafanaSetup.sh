@@ -1,5 +1,5 @@
 #call with admin password as argument
-password = $1
+password=$1
 #update
 sudo yum update
 
