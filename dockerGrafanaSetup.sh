@@ -1,3 +1,5 @@
+#call with admin password as argument
+password = $1
 #update
 sudo yum update
 
@@ -33,7 +35,7 @@ mkdir -p ~/grafana/var/lib/grafana
 #start statsd, graphite and grafana
 #see documentation: https://github.com/hopsoft/docker-graphite-statsd
 docker run -d --name graphite --restart=always --network statsdnetwork -p 80:80 -p 2003-2004:2003-2004 -p 2023-2024:2023-2024 -p 8125:8125/udp -p 8126:8126 -v ~/graphite/opt/graphite/conf:/opt/graphite/conf -v ~/graphite/opt/graphite/storage:/opt/graphite/storage -v ~/statsd/opt/statsd:/opt/statsd graphiteapp/graphite-statsd
-docker run -d -p 3000:3000 --network statsdnetwork --name grafana -e"GF_SECURITY_ADMIN_PASSWORD=password" -v ~/grafana/var/lib/grafana:/var/lib/grafana grafana/grafana
+docker run -d -p 3000:3000 --network statsdnetwork --name grafana -e"GF_SECURITY_ADMIN_PASSWORD=$password" -v ~/grafana/var/lib/grafana:/var/lib/grafana grafana/grafana
 
 #verify setup
 docker ps -a
