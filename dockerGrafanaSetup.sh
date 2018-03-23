@@ -12,7 +12,7 @@ npm install -g artillery
 
 #update and install docker
 sudo yum install -y docker
-sudo docker service start
+sudo service docker start
 sudo usermod -a -G docker ec2-user
 
 #create docker network
@@ -23,12 +23,12 @@ sudo sysctl net.ipv4.conf.all.forwarding=1
 sudo iptables -P FORWARD ACCEPT
 
 #create statsd volumes
-mkdir statsd/opt/statsd
+mkdir /statsd/opt/statsd
 #create graphite volume
-mkdir graphite/opt/graphite/conf
-mkdir graphite/opt/graphite/storage
+mkdir /graphite/opt/graphite/conf
+mkdir /graphite/opt/graphite/storage
 #create grafana volume
-mkdir grafana/var/lib/grafana
+mkdir /grafana/var/lib/grafana
 
 #start statsd, graphite and grafana
 #see documentation: https://github.com/hopsoft/docker-graphite-statsd
